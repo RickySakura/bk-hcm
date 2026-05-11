@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, h } from 'vue';
+import { computed, h, inject, ref, type Ref } from 'vue';
 import { PaginationType } from '@/typings';
 import { ModelPropertyColumn } from '@/model/typings';
 import usePage from '@/hooks/use-page';
 import useTableSettings from '@/hooks/use-table-settings';
 import { Button } from 'bkui-vue';
 import { useWhereAmI } from '@/hooks/useWhereAmI';
+import { VendorEnum, SecondaryAccountResourceTypeEnum } from '@/common/constant';
 import {
   AUTH_UPDATE_PERMISSION_POLICY_LIBRARY,
   AUTH_APPLY_PERMISSION_POLICY_LIBRARY,
@@ -17,6 +18,7 @@ import { getAuthSignByBusinessId } from '@/utils';
 import { MENU_BUSINESS_CLOUD_ACCOUNT } from '@/constants/menu-symbol';
 import type { LinkPopoverItem } from '@/components/display-value/appearance/link-popover.vue';
 import routeAction from '@/router/utils/action';
+import { useSecondaryAccountStore } from '@/store/cloud-account-manage/secondary-account';
 
 export interface IDataListProps {
   columns: ModelPropertyColumn[];
@@ -40,6 +42,9 @@ const { handlePageChange, handlePageSizeChange, handleSort } = usePage();
 
 const { settings } = useTableSettings(props.columns);
 const { isBusinessPage, getBizsId } = useWhereAmI();
+const secondaryAccountStore = useSecondaryAccountStore();
+
+const currentVendor = inject<Ref<VendorEnum>>('currentVendor', ref(VendorEnum.TCLOUD));
 
 const bizId = computed(() => (isBusinessPage ? getBizsId() : 0));
 
@@ -84,8 +89,17 @@ const getColumnRender = (column: ModelPropertyColumn) => {
 };
 
 const getAccountLoadFn = (row: IPermissionPolicyItem) => async (): Promise<LinkPopoverItem[]> => {
-  // TODO: 等接口提供云id
-  return row.related_accounts.map((id) => ({ id, label: id }));
+  if (!row.related_accounts?.length || !currentVendor?.value) return [];
+  const accounts = await secondaryAccountStore.getSecondaryAccountListByAccountIds(
+    row.related_accounts,
+    currentVendor.value,
+    SecondaryAccountResourceTypeEnum.PERMISSION,
+    bizId.value,
+  );
+  return accounts.map((account) => ({
+    id: account.id,
+    label: account?.extension?.cloud_main_account_id,
+  }));
 };
 </script>
 
@@ -126,7 +140,7 @@ const getAccountLoadFn = (row: IPermissionPolicyItem) => async (): Promise<LinkP
                 appearanceProps: {
                   loadFn: getAccountLoadFn(row),
                   onLinkClick: handleGoToAccount,
-                  emptyText: '未查询到关联三级账号',
+                  emptyText: '未查询到关联二级账号',
                 },
               }"
             />
