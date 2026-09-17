@@ -1,0 +1,98 @@
+{
+  "id": "feat-clb-list-spec-field",
+  "title": "CLB 列表实例规格字段",
+  "currentStage": "test",
+  "createdAt": "2026-09-16T09:55:29.448Z",
+  "updatedAt": "2026-09-17T03:40:20.849Z",
+  "artifacts": {
+    "coding": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-list-spec-field/coding.md",
+        "kind": "file",
+        "addedAt": "2026-09-17T01:59:47.445Z"
+      }
+    ],
+    "test": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-list-spec-field/test.md",
+        "kind": "file",
+        "addedAt": "2026-09-17T03:40:20.849Z"
+      }
+    ]
+  },
+  "approvals": {
+    "coding": {
+      "stage": "coding",
+      "approvedAt": "2026-09-17T03:33:36.861Z",
+      "note": "用户确认：CLB 列表实例规格字段开发完成，coding.md 可作为 test 阶段唯一依据，推进到 test。"
+    }
+  },
+  "history": [
+    {
+      "from": "init",
+      "to": "coding",
+      "at": "2026-09-16T09:55:29.448Z",
+      "gitHead": "c5b61eff7862234851230f61cbb1b2cf0317d5e0"
+    },
+    {
+      "from": "coding",
+      "to": "test",
+      "at": "2026-09-17T03:33:36.861Z",
+      "note": "用户确认：CLB 列表实例规格字段开发完成，coding.md 可作为 test 阶段唯一依据，推进到 test。"
+    }
+  ],
+  "requirementId": "req-feat-clb-exclusive-cluster",
+  "branch": "feat-clb-exclusive-cluster-mgmt",
+  "mode": "lite",
+  "stages": [
+    "coding",
+    "test",
+    "done"
+  ],
+  "tapd": {
+    "workspaceId": "69995598",
+    "objectType": "story",
+    "itemId": "1069995598138114064",
+    "parentId": "1069995598133757341"
+  },
+  "nodeRuns": {
+    "tapd-story-clarification-and-evaluation-lite": {
+      "status": "skipped",
+      "at": "2026-09-16T09:56:23.160Z",
+      "note": "用户选择跳过：绑定单「CLB列表实例规格字段」(1069995598138114064) 已处 approved(已评审)，确已完成澄清与评估，不重跑。仅绑定 1 张单。"
+    }
+  },
+  "artifactFreshness": {
+    "coding": {
+      "boundFiles": [
+        "children/display/field-clb.ts",
+        "children/search/condition-clb.ts",
+        "use-columns.tsx",
+        "views/load-balancer/utils.ts",
+        "constants.ts",
+        "views/load-balancer/constants.ts",
+        "src/views/load-balancer/constants.ts",
+        "src/views/load-balancer/utils.ts",
+        "src/views/load-balancer/children/display/field-clb.ts",
+        "src/views/load-balancer/children/search/condition-clb.ts",
+        "src/store/load-balancer/clb.ts",
+        "src/views/resource/resource-manage/hooks/use-columns.tsx",
+        "src/views/resource/resource-manage/children/manage/load-balancer-manage.vue",
+        "utils.ts",
+        "field-clb.ts",
+        "field-rs.ts",
+        "data-list.vue",
+        "condition-clb.ts",
+        "load-balancer-manage.vue",
+        "store/load-balancer/clb.ts",
+        "use-table-settings.ts",
+        "batch-delete-dialog.vue",
+        "load-balancer-list.vue",
+        "details.vue"
+      ],
+      "contentFingerprint": "3663cb0014609bffa1dd44ecd83a2d0e7e7e394d",
+      "codeBaseline": "91d395a7aa337e932ff076c4b0681218fbd4368f",
+      "seatedAt": "2026-09-17T03:33:25.497Z"
+    }
+  }
+}

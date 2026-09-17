@@ -1,6 +1,7 @@
 <template>
   <Loading :loading="isLoading" :opacity="1">
     <section class="toolbar" :class="isResourcePage ? 'justify-content-end' : 'justify-content-between'">
+      <slot name="toolbar-prefix"></slot>
       <slot></slot>
       <BatchDistribution
         :selections="selections"
@@ -117,6 +118,8 @@ import { CLB_STATUS_MAP, LB_NETWORK_TYPE_MAP } from '@/constants';
 import { useAccountBusiness } from '@/views/resource/resource-manage/hooks/use-account-business';
 import { useRegionStore } from '@/store/region';
 import { buildVIPFilterRules } from '@/utils/search';
+import { LOAD_BALANCER_INSTANCE_SPEC_NAME } from '@/views/load-balancer/constants';
+import { buildLoadBalancerInstanceSpecFilterRules } from '@/views/load-balancer/utils';
 import { ILoadBalancerWithDeleteProtectionItem, useLoadBalancerClbStore } from '@/store/load-balancer/clb';
 
 const props = defineProps({
@@ -129,12 +132,12 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
-// eslint-disable-next-line vue/no-dupe-keys
 const { whereAmI } = useWhereAmI();
 const { getAllVendorRegion } = useRegionStore();
 const { searchValue, filter } = useFilter(props, {
   conditionFormatterMapper: {
     lb_vip: (value: string) => buildVIPFilterRules(value),
+    instance_spec: (value: string | string[]) => buildLoadBalancerInstanceSpecFilterRules(value),
   },
 });
 
@@ -246,6 +249,12 @@ const clbsSearchData = [
       id: lbType,
       name: LB_NETWORK_TYPE_MAP[lbType as keyof typeof LB_NETWORK_TYPE_MAP],
     })),
+  },
+  {
+    id: 'instance_spec',
+    name: t('实例规格'),
+    async: false,
+    children: Object.entries(LOAD_BALANCER_INSTANCE_SPEC_NAME).map(([id, name]) => ({ id, name })),
   },
   {
     id: 'ip_version',

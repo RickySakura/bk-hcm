@@ -1,0 +1,166 @@
+{
+  "id": "feat-clb-exclusive-cluster-mgmt",
+  "title": "CLB exclusive cluster management list",
+  "currentStage": "test",
+  "createdAt": "2026-09-14T10:25:58.830Z",
+  "updatedAt": "2026-09-17T09:20:16.040Z",
+  "artifacts": {
+    "prd": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-exclusive-cluster-mgmt/prd.md",
+        "kind": "file",
+        "addedAt": "2026-09-15T02:01:27.608Z"
+      }
+    ],
+    "design": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-exclusive-cluster-mgmt/design.md",
+        "kind": "file",
+        "addedAt": "2026-09-15T02:11:20.157Z"
+      }
+    ],
+    "api": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-exclusive-cluster-mgmt/api.md",
+        "kind": "file",
+        "addedAt": "2026-09-15T02:18:56.434Z"
+      }
+    ],
+    "coding": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-exclusive-cluster-mgmt/coding.md",
+        "kind": "file",
+        "addedAt": "2026-09-15T02:24:50.899Z"
+      }
+    ],
+    "test": [
+      {
+        "ref": ".hcmfe/workflow/feat-clb-exclusive-cluster-mgmt/test.md",
+        "kind": "file",
+        "addedAt": "2026-09-17T03:40:15.176Z"
+      }
+    ]
+  },
+  "approvals": {
+    "prd": {
+      "stage": "prd",
+      "approvedAt": "2026-09-15T02:04:13.493Z",
+      "note": "用户确认：prd.md 可作为 design 阶段唯一依据"
+    },
+    "design": {
+      "stage": "design",
+      "approvedAt": "2026-09-15T02:18:16.109Z",
+      "note": "用户确认：design.md 可作为 api 阶段唯一依据"
+    },
+    "api": {
+      "stage": "api",
+      "approvedAt": "2026-09-15T02:23:45.403Z",
+      "note": "用户确认：api.md 可作为 coding 阶段唯一依据"
+    },
+    "coding": {
+      "stage": "coding",
+      "approvedAt": "2026-09-17T03:32:45.747Z",
+      "note": "用户确认：独占集群管理页面开发完成，coding.md 可作为 test 阶段唯一依据，推进到 test。"
+    }
+  },
+  "history": [
+    {
+      "from": "init",
+      "to": "prd",
+      "at": "2026-09-14T10:25:58.830Z"
+    },
+    {
+      "from": "prd",
+      "to": "design",
+      "at": "2026-09-15T02:04:13.493Z",
+      "note": "用户确认：prd.md 可作为 design 阶段唯一依据"
+    },
+    {
+      "from": "design",
+      "to": "api",
+      "at": "2026-09-15T02:18:16.109Z",
+      "note": "用户确认：design.md 可作为 api 阶段唯一依据"
+    },
+    {
+      "from": "api",
+      "to": "coding",
+      "at": "2026-09-15T02:23:45.403Z",
+      "gitHead": "c5b61eff7862234851230f61cbb1b2cf0317d5e0",
+      "note": "用户确认：api.md 可作为 coding 阶段唯一依据"
+    },
+    {
+      "from": "coding",
+      "to": "test",
+      "at": "2026-09-17T03:32:45.747Z",
+      "note": "用户确认：独占集群管理页面开发完成，coding.md 可作为 test 阶段唯一依据，推进到 test。"
+    }
+  ],
+  "requirementId": "req-feat-clb-exclusive-cluster",
+  "branch": "feat-clb-exclusive-cluster-mgmt",
+  "tapd": {
+    "workspaceId": "69995598",
+    "objectType": "story",
+    "itemId": "1069995598138113967",
+    "parentId": "1069995598133757341"
+  },
+  "nodeRuns": {
+    "tapd-story-clarification-and-evaluation-full": {
+      "status": "skipped",
+      "at": "2026-09-15T01:59:54.631Z",
+      "note": "用户选择 2：跳过澄清+全量解读。已绑定子单「独占集群管理页面」确已完成澄清且已全量解读，不重跑。"
+    },
+    "hcm-design-icon-intake": {
+      "status": "skipped",
+      "at": "2026-09-15T02:15:13.713Z",
+      "note": "用户选择 2：都跳过。本迭代无独立设计稿、无新图标，沿用现网工具栏/表格操作。"
+    },
+    "hcm-design-comp-intake": {
+      "status": "skipped",
+      "at": "2026-09-15T02:15:14.477Z",
+      "note": "用户选择 2：都跳过。组件落码入口留到 coding 再定，不在 design 回填。"
+    }
+  },
+  "artifactFreshness": {
+    "coding": {
+      "boundFiles": [
+        "entry-rsc.vue",
+        "load-balancer-manage.vue",
+        "option-common.ts",
+        "src/views/load-balancer/entry-rsc.vue",
+        "src/views/load-balancer/children/resource-subtype-switch.vue",
+        "src/views/load-balancer/constants.ts",
+        "src/views/resource/resource-manage/children/manage/load-balancer-manage.vue",
+        "src/views/load-balancer/exclusive-cluster/index.vue",
+        "src/views/load-balancer/exclusive-cluster/data-list.vue",
+        "src/views/load-balancer/exclusive-cluster/column.ts",
+        "src/views/load-balancer/exclusive-cluster/search-condition.ts",
+        "src/views/load-balancer/exclusive-cluster/constants.ts",
+        "src/store/load-balancer/exclusive-cluster.ts",
+        "src/views/resource/resource-manage/children/dialog/batch-distribution/index.tsx",
+        "src/common/resource-constant.ts",
+        "src/components/resource-search-select/index.vue",
+        "src/components/resource-search-select/map-search-fields.ts",
+        "src/components/resource-search-select/option-common.ts",
+        "views/load-balancer/constants.ts",
+        "children/resource-subtype-switch.vue",
+        "search-condition.ts",
+        "column.ts",
+        "map-search-fields.ts",
+        "clb.ts",
+        "listener.ts",
+        "api.ts",
+        "constants.ts",
+        ".vue",
+        "src/style/override/bkpopover.scss",
+        "views/task/clb.vue",
+        "permission-template/index.vue",
+        "load-balancer/clb/load-balancer-table.vue",
+        "data-list.vue",
+        "index.vue"
+      ],
+      "contentFingerprint": "fd031debd3abf2cb037f8c091f702671751273a7",
+      "codeBaseline": "35649d328f0be27bd324f8e7d91fca3c0e20ab27",
+      "seatedAt": "2026-09-17T09:20:16.040Z"
+    }
+  }
+}
